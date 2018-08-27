@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content  padding>
+    <ion-card *ngIf="unauthorized" text-center>
+        <ion-card-content>
+          <ion-card-title >
+            Usuário ou senha inválido.
+           </ion-card-title>
+        </ion-card-content>
+      </ion-card>
+  <form [formGroup]="loginForm" (ngSubmit)="onFormSubmit()">
+
+  <ion-list>
+    <ion-item>
+      <ion-label fixed>Username</ion-label>
+      <ion-input formControlName="username"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label fixed>Senha</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+  
+  </ion-list>
+  <button ion-button full>Entrar</button>
+  </form>
+  <button ion-button clear full (click)="logEvent($event)"> Não possuo cadastro </button>
+  
+</ion-content>

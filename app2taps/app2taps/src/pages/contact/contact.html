@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Contact
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="userForm" (ngSubmit)="onFormSubmit()">
+
+    <div *ngIf="isValidFormSubmitted">
+      <h1>Cadastrado com sucesso!</h1>
+    </div>
+    <ion-list>
+      <!-- Name -->
+      <ion-item no-lines *ngIf="name.errors?.required && isValidFormSubmitted != null && !isValidFormSubmitted" [ngClass]="'error'">
+          Campo nome é obrigatório.
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>Nome </ion-label>
+        <ion-input type="text" formControlName="name"></ion-input>
+      </ion-item>
+      
+      <!-- Username -->
+      <ion-item no-lines *ngIf="username.errors?.required && isValidFormSubmitted != null && !isValidFormSubmitted" [ngClass]="error">
+        Campo username é obrigatório.
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>Username</ion-label>
+        <ion-input type="text" formControlName="username"></ion-input>
+      </ion-item>
+
+      <!-- password -->
+      <ion-item no-lines *ngIf="password.errors?.required && isValidFormSubmitted != null && !isValidFormSubmitted" [ngClass]="error">
+          Campo senha é obrigatório.
+      </ion-item>
+      <ion-item no-lines *ngIf="password.errors?.minlength && isValidFormSubmitted != null && !isValidFormSubmitted" [ngClass]="error">
+          Senha deve ter 6 ou mais caracteres.
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>Senha</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+
+      </ion-item>
+      <button ion-button full type="submit">Cadastrar</button>
+
+    </ion-list>
+  </form>
+
+</ion-content>
